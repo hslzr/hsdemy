@@ -9,10 +9,10 @@ volumes:
 services:
   db:
     image: postgres:9.5.1
-    ports:
-      # We'll bind our host's port 5432 to postgres's port 5432, so we can use
-      # our database IDEs with it:
-      - 5432:5432
+#    ports:
+#      # We'll bind our host's port 5432 to postgres's port 5432, so we can use
+#      # our database IDEs with it:
+#      - 5432:5432
     volumes:
       # We'll store the postgres data in the 'postgres-data' volume we defined:
       - postgres-data:/var/lib/postgresql/data
@@ -26,8 +26,8 @@ services:
   web: &app
     image: ruby:2.2.5
     command: rails server -b 0.0.0.0 -p 3000 -P /tmp/rails.pid
-    ports:
-      - 3000:3000
+    # ports:
+    #   - 3000:3000
     # Specify the directory from where all commands sent to the container will be
     # issued to where the code is mounted:
     working_dir: /usr/src/app
